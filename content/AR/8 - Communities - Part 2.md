@@ -1,3 +1,5 @@
+Questa lezione è il continuo della [[7 - Communities - Part 1|precedente ←]]
+
 # Metodi euristici per partizionare in comunità
 Nella precedente [[7 - Communities - Part 1|parte]] sono stati introdotti i concetti [[7 - Communities - Part 1#Cut-Communities|cut-community]] e [[7 - Communities - Part 1#Web-Communities|web-community]], e dimostrato che il problema del partizionamento di un grafo in web-communities è un problema **difficile**[^1] dal punto di vista computazionale.
 
@@ -13,6 +15,7 @@ Osservare che entrambi i metodi consentono di ottenere delle **partizioni nidifi
 
 
 ![Schema di partizione metodo agglomerativo.|350](ar-lesson08-img2.png)
+
 Entrambi i metodi hanno quindi uno *schema di partizione* ad albero.
 
 Osservare infine che entrambi i metodi richiedono la scelta di un arco da rimuovere o aggiungere ad ogni passo.
@@ -43,13 +46,18 @@ Secondo questo criterio possiamo rimuovere gli archi sui quali passa maggior flu
 
 Più formalmente, considerando un grafo <u>non diretto</u> $G = (V,E)$, definiamo con $\sigma_{st}(u,v)$ il numero di [shortest-paths](https://en.wikipedia.org/wiki/Shortest_path_problem) $\pi^\star(s,t)$ (o *camminimi minimi*) tra $s$ e $t$ che passano per l'arco $(u,v)$.
 
-Definiamo poi con $b_{st}(u,v)$ la **betweennes dell'arco** $(u,v)$ **rispetto alla coppia** $s,t$ come la **frazione** di shortest path $\pi^\star(s,t)$ che passano per l'arco $(u,v)$ $$
+Definiamo poi con $b_{st}(u,v)$ la **betweennes dell'arco** $(u,v)$ **rispetto alla coppia** $s,t$ come la **frazione** di shortest path $\pi^\star(s,t)$ che passano per l'arco $(u,v)$
+$$
 \begin{align*}
 \sigma_{st} &= \vert \lbrace \pi^\star(s,t)  \rbrace \vert\\
 b_{st}(u,v) &= \frac{\sigma_{st}(u,v)}{\sigma_{st}}
 \end{align*}
-$$Definiamo infine la **betweenness** $b(u,v)$ di un arco $(u,v)$ come la *semi-somma* di tutte le betweenness relative $b_{st}(u,v)$, per ogni coppia di nodi $s,t$
-$$b(u,v) = \frac{1}{2} \sum_{(s,t) \in \binom{V}{2}} b_{st}(u,v)$$
+$$
+Definiamo infine la **betweenness** $b(u,v)$ di un arco $(u,v)$ come la *semi-somma* di tutte le betweenness relative $b_{st}(u,v)$, per ogni coppia di nodi $s,t$
+$$
+b(u,v) = \frac{1}{2} \sum_{(s,t) \in \binom{V}{2}} b_{st}(u,v)
+$$
+
 Notare che il fattore $1/2$ è necessario per evitare di contare le ripetizioni, del tipo $b_{st}(u,v)$ e $b_{ts}(u,v)$.
 
 Analogamente alla **edge-betweenness** si può definire una **node-betweenness**, seguendo la stessa definizione.
@@ -71,14 +79,17 @@ Purtroppo non si può applicare un approccio brute force calcolando tutti gli sh
 Per ogni nodo $s \in V$ l'algoritmo del calcolo della betweenness degli archi si suddivide in tre fasi:
 1. Calcolare il sottografo $T(s)$ composto dall'*unione* degli alberi di camminimi minimi radicati in $s$. Anche se il numero di tali alberi può essere esponenziale, in realtà il calcolo di $T(s)$ può essere effettuato in tempo polinomiale con una visita in ampiezza `BFS` con le dovute modifiche. ^8a6088
 2. Mediante una visita `top-down` calcolo i valori $\sigma_{sv}$ per ogni $v \in V \setminus \lbrace s \rbrace$, e questo vedremo si può fare in tempo polinomiale. ^853300
-3. Infine mediante una visita `bottom-up`, e grazie a quanto calcolato nel punto 2, calcolo per ogni arco $(u,v) \in T(s)$ tutte le betweennes relative a shortest paths che partono da $s$, ovvero il valore $$b_s(u,v) = \sum_{t \in V \setminus \lbrace s \rbrace} b_{st}(u,v) \;\; \forall (u,v) \in T(s)$$ ^f5c61f
+3. Infine mediante una visita `bottom-up`, e grazie a quanto calcolato nel punto 2, calcolo per ogni arco $(u,v) \in T(s)$ tutte le betweennes relative a shortest paths che partono da $s$, ovvero il valore $b_s(u,v) = \sum_{t \in V \setminus \lbrace s \rbrace} b_{st}(u,v) \;\; \forall (u,v) \in T(s)$ ^f5c61f
 
 
 Per concludere, una volta eseguiti i punti [[#^8a6088|(1)]], [[#^853300|(2)]] e [[#^f5c61f|(3)]]  per ogni nodo $s \in V$, possiamo ricavare i valori delle betweenness come segue
-$$b(u,v) = \frac{1}{2} \sum_{s \in V} b_s(u,v)$$
+$$
+b(u,v) = \frac{1}{2} \sum_{s \in V} b_s(u,v)
+$$
+
 Osserviamo che nel punto `3` calcoliamo $b_s(u,v)$ solo per gli archi di $T(s)$, in quanto se $(u,v)$ non appartiene al sottografo degli shortest path $T(s)$ allora vuol dire che non appartiene nessun shortest path, e quindi non avrebbe senso calcolarlo (per definizione di betweenness).
 
-Andiamo ora a vedere un esempio pratico che mostra anche come eseguire i tre passi dell\'algoritmo del calcolo della betweenness.
+Andiamo ora a vedere un esempio pratico che mostra anche come eseguire i tre passi dell'algoritmo del calcolo della betweenness.
 
 ### Fase 1
 Per calcolare $T(s)$ basta effettuare una visita in ampiezza `BFS` opportunamente modificata.
@@ -91,8 +102,15 @@ Perciò, tutti gli archi $(u,v)$ con $u \in L_{h-1}$ e $v \in L_h$ faranno parte
 
 Perciò possiamo calcolare $T(s)$ nella seguente maniera:
 1. Poniamo inizialmente $L_0 = \lbrace s \rbrace$ e $T(s) = \emptyset$.
-2. Per ogni $h \geq 0$ calcoliamo $L_{h+1}$ come tutti quei nodi **fuori** $L_0 \cup L_1 \cup ... \cup L_h$ tali che hanno almeno un vicino in $v \in L_h$, ovvero come $$ L_{h+1} \equiv \lbrace v \in V \setminus (L_0 \cup L_1 \cup ... \cup L_h) | \exists u \in L_h : (u,v) \in E  \rbrace$$
-3. Calcolato $L_{h+1}$ poniamo $T(s)$ come $$T(s) = T(s) \cup \lbrace (u,v) \in E | u \in L_h \land v \in L_{h+1} \rbrace$$
+2. Per ogni $h \geq 0$ calcoliamo $L_{h+1}$ come tutti quei nodi **fuori** $L_0 \cup L_1 \cup ... \cup L_h$ tali che hanno almeno un vicino in $v \in L_h$, ovvero come
+$$
+L_{h+1} \equiv \lbrace v \in V \setminus (L_0 \cup L_1 \cup ... \cup L_h) | \exists u \in L_h : (u,v) \in E  \rbrace
+$$
+3. Calcolato $L_{h+1}$ poniamo $T(s)$ come
+$$
+T(s) = T(s) \cup \lbrace (u,v) \in E \mid u \in L_h \land v \in L_{h+1} \rbrace
+$$
+
 ![Costruzione sottografo dei cammini minimi.|400](ar-lesson08-img4.png)
 
 ### Fase 2
@@ -113,7 +131,11 @@ $$
 Notare che questa fase viene eseguita facendo una visita `top-down` del sottografo $T(s)$.
 
 ### Fase 3
-Nella terza fase dobbiamo calcolare per ogni arco $(u,v) \in T(s)$ la quantità di flusso che ci passa sopra rispetto a $s$, ovvero $$b_s(u,v) = \sum_{t \in V \setminus \lbrace s \rbrace} b_{st}(u,v)$$
+Nella terza fase dobbiamo calcolare per ogni arco $(u,v) \in T(s)$ la quantità di flusso che ci passa sopra rispetto a $s$, ovvero
+$$
+b_s(u,v) = \sum_{t \in V \setminus \lbrace s \rbrace} b_{st}(u,v)
+$$
+
 Per fare ciò in questo caso faremo una visita `bottom-up` di $T(s)$.
 
 Si $d$ il numero di livelli in $T(s)$, e consideriamo un arco $(y,x)$ con $y \in L_{d-1}$ e $x \in L_d$. 
@@ -121,7 +143,10 @@ Si $d$ il numero di livelli in $T(s)$, e consideriamo un arco $(y,x)$ con $y \in
 Osserviamo che tutti gli shortest path che partono da $s$ e passano attravero l'arco $(y,x)$ sono tutti shortest path che terminano in $x$.
 
 Perciò il flusso che passa su $(y,x)$ rispetto a $s$ sarà pari al rapporto tra il numero di shortest path che vanno da $s$ a $y$ (ovvero $\sigma_{sy}$) e il numero complessivo di shortest path che vanno da $s$ ad $x$ (ovvero $\sigma_{sx}$).
-$$b_s(y,x) = \sum_{t \in V \setminus \lbrace s \rbrace} b_{st}(y,x) = b_{sx}(y,x) = \frac{\sigma_{sx}(y,x)}{\sigma_{sx}} = \frac{\sigma_{sy}}{\sigma_{sx}}$$
+$$
+b_s(y,x) = \sum_{t \in V \setminus \lbrace s \rbrace} b_{st}(y,x) = b_{sx}(y,x) = \frac{\sigma_{sx}(y,x)}{\sigma_{sx}} = \frac{\sigma_{sy}}{\sigma_{sx}}
+$$
+
 Analogamente possiamo applicare questo ragionamento per tutti gli archi che collegano nodi dell'ultimo livello, come mostrato nella seguente [[#^b81567|figura]].
 
 ![Calcolo di $b_s(y, x)$.|550](ar-lesson08-img6.png) ^b81567
@@ -129,6 +154,7 @@ Analogamente possiamo applicare questo ragionamento per tutti gli archi che coll
 Adesso, saliamo di un livello, e consideriamo gli archi che entrano nel livello $L_{d-1}$. 
 
 Rifacendoci all'[[#^a89eb9|immagine in esempio]], consideriamo l'arco $(z, y)$, con $z \in L_{d-2}$ e $y \in L_{d-1}$.
+
 ![Esempio da considerare.](ar-lesson08-img7.png) ^a89eb9
 
 Osserviamo che tra tutti i cammini minimi che passano per l'arco $(z, y)$, una parte saranno cammini che termineranno in $y$, e una parte saranno cammini minimi che andranno ai nodi di livello inferiore.
@@ -137,13 +163,20 @@ Perciò la frazione di shortest path che, partendo da $s$, passano per $(z, y)$ 
 - La frazione degli shortest path da $s$ ad $y$, ovvero $\frac{\sigma_{sz}}{\sigma_{sy}}$.
 - Per ogni *diretto discendente*[^2] $x$ di $y$, una frazione $\frac{\sigma_{sz}}{\sigma_{sy}}$ della frazione di shortest path da $s$ ad $x$ che passano per l'arco $(y,x)$, ovvero $\frac{\sigma_{sz}}{\sigma_{sy}} \cdot \frac{\sigma_{sy}}{\sigma_{sx}} = \frac{\sigma_{sz}}{\sigma_{sx}}$.
 
-Quindi, rifacendoci all\'esempio, avremo che $$ b_s(z,y) = \frac{\sigma_{sz}}{\sigma_{sy}} + \frac{\sigma_{sz}}{\sigma_{sy}} \cdot \frac{\sigma_{sy}}{\sigma_{sx}} = \frac{1}{3} + \frac{1}{3}\cdot\frac{3}{5} = \frac{8}{15}$$
+Quindi, rifacendoci all\'esempio, avremo che
+$$
+b_s(z,y) = \frac{\sigma_{sz}}{\sigma_{sy}} + \frac{\sigma_{sz}}{\sigma_{sy}} \cdot \frac{\sigma_{sy}}{\sigma_{sx}} = \frac{1}{3} + \frac{1}{3}\cdot\frac{3}{5} = \frac{8}{15}
+$$
 Così facendo abbiamo definito un metodo `bottom-up` per il calcolo tutti i valori $b_s(u,v)$.
 
 ![Calcolo di tutti i valori $b_s(u, v)$.|550](ar-lesson08-img8.png)
 
 ### Fase finale - Calcolo Betweenness
-Concludendo, possiamo calcolare la betweennes di tutti gli archi come già descritto in precedenza $$b(u,v) = \frac{1}{2} \sum_{s \in V} b_s(u,v)$$
+Concludendo, possiamo calcolare la betweennes di tutti gli archi come già descritto in precedenza
+$$
+b(u,v) = \frac{1}{2} \sum_{s \in V} b_s(u,v)
+$$
+
 Notiamo che questa procedura permette di calcolare la betweennes degli archi in tempo *polinomiale* nella grandezza della rete (e non esponenziale).
 
 Infatti la [[#Fase 1|fase 1]] è una semplice visita in ampiezza del grafo (e si può calcolare in tempo $O(|V| + |E|)$), la [[#Fase 2|fase 2]] è un'ulteriore visita in ampiezza di $T(s)$ (e si può calcolare ancora in tempo $O(|V| + |E|)$), e infine la [[#Fase 3|fase 3]] è nuovamente una visita in ampiezza, partendo però dal livello più basso (acnora una volta $O(|V| + |E|)$).
@@ -159,7 +192,10 @@ Per esempio in una rete molto grande è molto raro trovare dei *bridge edges*, i
 Per rilassare i concetti di *strong* e *waeak ties* possiamo definire un modello in cui le relazioni tra due nodi della rete sono **pesate** in maniera numerica.
 Quindi invece di considerare una rete $G = (V, S \cup W)$, potremmo per esempio definire una rete $G = (V,E,w)$ dove $w : E \rightarrow \mathbb{N}$ è una funzione che rappresenta la *forza* delle relazioni, più è alto il valore $w(u,v)$ più la relazione tra i nodi $u$ e $v$ è <u>forte</u>.
 
-Per quanto riguarda il concetto di *bridge edge*, possiamo considerare il concetto di **neighborhood overlap**, ovvero la frazie di amicie in comune che hanno due nodi. $$NO(u,v) = \frac{ \vert N(u) \cap N(v) \vert }{ \vert N(u) \cup N(v) - \lbrace u,v \rbrace \vert }$$
+Per quanto riguarda il concetto di *bridge edge*, possiamo considerare il concetto di **neighborhood overlap**, ovvero la frazie di amicie in comune che hanno due nodi.
+$$
+NO(u,v) = \frac{ \vert N(u) \cap N(v) \vert }{ \vert N(u) \cup N(v) - \lbrace u,v \rbrace \vert }
+$$
 Osserviamo che un *local bridge* $(u,v)$ ha un neighborhood overlap $NO(u,v) = 0$.
 
 Sappiamo che i due concetti *bridge edges* e *strong/waeak ties* sono correllati, ovvero sappiamo che qualora una rete $G$ soddisfa la [[7 - Communities - Part 1#The Strong Triadic Closure Property|STCP]] allora tutti i *local bridge* sono *weak ties*.
@@ -192,7 +228,10 @@ In genere più una persona è ben inserita in un gruppo, ovvero più ha fiducia 
 Contrariamente, l'esperimento di Granovetter ci suggerisce che avvolte è altrettanto necessario avere contatti con gente appartenente ad altri gruppi, in quanto così facendo avremo accesso a differenti fonti di informazioni potenzialmente molto convenienti.
 
 Queste due osservazioni ci permettono di inutire che i vantaggi dei nodi non dipendono solamente dall'appartenenza a comunità, bensì anche dalla posizione di tali nodi e da quanto sono ben inseriti o meno all'interno dei rispettivi gruppi.
-Per aiutarci definiamo il concetto di **embeddedness** di un arco $(u,v)$ come la quantità di vicinato in comune ai due estremi di un arco, ovvero $$\text{Emb}(u,v) = \vert N(u) \cap N(v) \vert$$
+Per aiutarci definiamo il concetto di **embeddedness** di un arco $(u,v)$ come la quantità di vicinato in comune ai due estremi di un arco, ovvero
+$$
+\text{Emb}(u,v) = \vert N(u) \cap N(v) \vert
+$$
 Osserviamo che un *local bridge* è un arco con embeddedness pari a $0$.
 
 Più la embeddedness di un arco è alta, più i due suoi vicini sono ben integrati tra di loro.

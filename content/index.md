@@ -66,7 +66,7 @@ A tal punto, sarei anche grato se voi mi notificasse eventuali errori, aprendo d
 	- [[GT|Game Theory]] 🚧 ==coming soon== 🚧
 
 ## Secondo anno
--  [[0 - Inferenza Statistica e Teoria dell'Informazione|Inferenza Statistica e Teoria dell'Informazione]]
+- [[0 - Inferenza Statistica e Teoria dell'Informazione|Inferenza Statistica e Teoria dell'Informazione]]
 - [[0 - Information Retrieval|Information Retrieval]]
 - [[0 - Machine Learning|Machine Learning]]
 - [[0 - Natural Language Processing|Natural Language Processing]]
@@ -77,11 +77,13 @@ A tal punto, sarei anche grato se voi mi notificasse eventuali errori, aprendo d
 # Changelog
 
 Fixed pages:
--  [[1 - Erdos-Renyi Random Graph]]
+- [[1 - Erdos-Renyi Random Graph]]
 - [[2 - Power Law]] 
 - [[4 - Grafi geometrici aleatori]]
 - [[6 - Small World]]
 - [[7 - Communities - Part 1]]
+- [[8 - Communities - Part 2]]
+- [[9 - Processi di diffusione - Part 1]]
 
 
 

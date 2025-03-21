@@ -343,6 +343,8 @@ Procediamo ora alla dimostrazione del teorema
 > Le due comunità risultanti saranno due cut-communites $\square$.
 
 
+[[8 - Communities - Part 2|lezione successiva →]]
+
 
 [^1]: ovvero in tempo $O(n^c)$ per qualche costante $c > 0$.
 

@@ -32,7 +32,7 @@ Consideriamo il grafo di informazioni del *web*: possiamo modellarlo tramite un 
 In uno studio fatto[^2] si è osservato che la frazione di nodi con *grado entrante* $k$ decresce come $k^{-c}$ (per qualche costante
 $c > 0$), e non come $k^{-k}$.
 
-Una funzione che decresce in questa maniera, ovvero come l\'*inverso di un polinomio*, è detta **power law**. Un\'altra definizione più formale è la seguente:
+Una funzione che decresce in questa maniera, ovvero come l\'*inverso di un polinomio*, è detta **power law**. Un'altra definizione più formale è la seguente:
 
 
 > [!info] Power Low
