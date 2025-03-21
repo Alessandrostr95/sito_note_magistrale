@@ -20,12 +20,17 @@ Perciò, se si è in contatto con tanta gente nello stato `A` ed altrettanta nel
 
 Modellando in maniera più formale, possiamo definire un nuovo *coordination game* in accordo alla seguente tabella
 
-![Nuovo coordination game con opzione di doppio stato (bilingua).](ar-lesson11-img1.png)
+- **Figura:** Nuovo coordination game con opzione di doppio stato (*bilingua*).
+
+	![[ar-lesson11-img1.png|Nuovo coordination game con opzione di doppio stato (bilingua).]]
 
 dove con $(a,b)^+$ si indica il massimo tra $a$ e $b$.
 
 Indichiamo ora con $V_A, V_B, V_{AB}$ l'insieme dei nodi negli stati `A`, `B` e `AB` rispettivamente, i quali compongono una *partizione* dell'insieme $V$ di tutti gli individui.
-Perciò, fissando con $c \geq 0$ il costo di adozione del *doppio stato* `AB`, possiamo dire che il guadagno complessivo del nodo $u$ che adotta `AB` è pari a $$\Big(\sum_{v \in N(u) \cap V_A} a\Big) + \Big(\sum_{v \in N(u) \cap V_B} b\Big) + \Big(\sum_{v \in N(u) \cap V_{AB}} (a,b)^+\Big) - c$$
+Perciò, fissando con $c \geq 0$ il costo di adozione del *doppio stato* `AB`, possiamo dire che il guadagno complessivo del nodo $u$ che adotta `AB` è pari a
+$$
+\Big(\sum_{v \in N(u) \cap V_A} a\Big) + \Big(\sum_{v \in N(u) \cap V_B} b\Big) + \Big(\sum_{v \in N(u) \cap V_{AB}} (a,b)^+\Big) - c
+$$
 
 Indichiamo quindi con $p_A(u), p_B(u), p_{AB}(u)$ i rispettivi guadagni che ha il nodo $u$ nell\'assumere gli stati `A`, `B` o `AB` come segue
 
@@ -42,7 +47,7 @@ Consideriamo ancora una volta la catenta infinita $\mathbb{Z}$, e poniamo come p
 Supponiamo di partire da un solo nodo iniziatore $u$, e senza perdita di generalità consideriamo solamente lo sviluppo del porcesso alla sua destra (tanto a sinistra è simmetrico).
 
 Prendiamo il nodo $v$ alla usa destra.
-I suoi guadagni nell\'essere negli stati `A`, `B` e `AB` saranno
+I suoi guadagni nell'essere negli stati `A`, `B` e `AB` saranno
 $$
 \begin{align*}
 	p_A(v) &= 5\\
@@ -53,7 +58,7 @@ $$
 
 Perciò a $v$ converrà diventare *bilingua* e adottare il doppio stato `AB`.
 
-Consideriamo ora il succesivo nodo $w$ sulla destra. I suoi guadagni saranno
+Consideriamo ora il successivo nodo $w$ sulla destra. I suoi guadagni saranno
 $$
 \begin{align*}
 	p_A(w) &= 5\\
@@ -77,7 +82,9 @@ perciò ora $v$ passa nello stato `A`.
 
 È facile convincersi che si genera una cascata completa di `A`.
 
-![$(a,b,c) = (5,3,1)$ e $V_0 = \lbrace u \rbrace$.](ar-lesson11-img2.gif)
+- **Figura:** $(a,b,c) = (5,3,1)$ e $V_0 = \lbrace u \rbrace$.
+
+	![[ar-lesson11-img2.gif]]
 
 Analizzeremo ora il processo di diffusione nel nuovo modello con compatibilità, e cercheremo di capire in quali situazioni si ha una cascata completa.
 
@@ -92,13 +99,19 @@ Uno studio di *Kleinberg* del 2007 ha invece dimostrato uno strano comportamento
 Analizziamo cosa succede nella rete infinita più semplice, la catena infinita $\mathbb{Z}$.
 
 Dato che fare un'analisi su tre parametri $a,b,c$ risulta molto complessa, conviene **normalizzare** $b$ ad 1, e quindi descrivere il processo solo in funzione di $a(b) = a$ e $c$. 
-Perciò, in questo modello semplificato (ma non meno espressivo) la soglia d'adozione di `A` sarà $$q(b) = q = \frac{1}{a+1}$$
+Perciò, in questo modello semplificato (ma non meno espressivo) la soglia d'adozione di `A` sarà
+$$
+q(b) = q = \frac{1}{a+1}
+$$
+
 Consideriamo la situazione in cui c'è un unico nodo iniziatore $x$.
 Il suo vicino $u$ avrà un vicino in $V_A$ e l'altro in $V_B$.
 
-![Il nodo $u$ deve scegliere quale stato conviene adottare.](ar-lesson11-img3.png)
+- **Figura:** Il nodo $u$ deve scegliere quale stato conviene adottare.
 
-Avremo che i guadagni nell\'adottare uno stato sono
+	![[ar-lesson11-img3.png]]
+
+Avremo che i guadagni nell'adottare uno stato sono
 $$
 \begin{align*}
 	p_A(u) &= a\\
@@ -152,7 +165,9 @@ $$
 $$
 Possiamo riassumere tutto in un grafico con assi $a$-$c$.
 
-![Grafico $a$-$c$.](ar-lesson11-img4.png)
+- **Figura:** Grafico $a$-$c$.
+
+	![[ar-lesson11-img4.png]]
 
 Dalle precedenti osservazioni possiamo trarre due prime conclusioni:
 - se il nodo $u$ rimane nello stato `B`, allora la diffusione di `A` è bloccata e non potrà mai più procedere in alcun modo.
@@ -161,7 +176,9 @@ Dalle precedenti osservazioni possiamo trarre due prime conclusioni:
 Resta ora da capire che succede se $u$ passa allo stato `AB`.
 In tal caso, avremo che il nodo $v$ avrà un nodo vicino nello stato `AB` e uno nello stato `B`, come nella seguente immagine
 
-![Il nodo $v$ deve scegliere quale stato conviene adottare.](ar-lesson11-img5.png)
+- **Figura:** Il nodo $v$ deve scegliere quale stato conviene adottare.
+
+	![[ar-lesson11-img5.png]]
 
 Dato che stiamo assumendo che $u$ è ricaduto nella zone verde del grafico, fissiamo le relazioni $c < 1$ e $c \leq a$.
 Ci chiediamo ora:
@@ -196,7 +213,9 @@ ovvero avremo che $p_A(v) < p_B(v)$ e $p_{AB}(v) < p_B(v)$.
 In tal csaso accadrà che $v$ adotta `B`, e quindi la diffusione di `A` si blocca dopo un'altro passo.
 Possiamo quindi estendere la parte blu del grafico come nell'immagine seguente
 
-![Estensione area blu.](ar-lesson11-img6.png)
+- **Figura:** Estensione area blu.
+
+	![[ar-lesson11-img6.png]]
 
 Non resta che considerare il caso `(2)`, quando $a \geq 1$.
 
@@ -222,9 +241,9 @@ $$
 \end{cases}
 $$
 
-![](ar-lesson11-img7.png)
+![[ar-lesson11-img7.png]]
 
-Infine, consideriamo l\'ultimo caso $1 \leq a < 2$.
+Infine, consideriamo l'ultimo caso $1 \leq a < 2$.
 In queste condizioni, i valori di guadagno di $v$ risultano essere
 $$
 \begin{align*}
@@ -234,13 +253,13 @@ $$
 \end{align*}
 $$
 
-Dato che $p_A(v) < p_B(v)$, sappiamo che in qeull'area il processo di diffusione di `A` si ferma, e quindi non avremo mai una cascata completa di `A`.
+Dato che $p_A(v) < p_B(v)$, sappiamo che in quell'area il processo di diffusione di `A` si ferma, e quindi non avremo mai una cascata completa di `A`.
 Poi, $p_B(v) > p_{AB}(v)$ se e solo se $2 > a + 1 - c$, ovvero se $a < c + 1$. In tal caso $v$ adotterà lo stato `B`, e in un altro passo verrà bloccato il processo di diffusione di `A`.
 Viceversa, se $a > c + 1$, allora avremo che $p_{AB}(v) > p_B(v)$, e quindi $v$ adotterà lo stato `AB`. Come prima, dopo un passo il nodo $u$ adotterà `A`, e così via dopo il nodo $v$, scatenando una cascata completa di `A`, dove però tutti i nodi transitano prima per `AB`.
 
 Il grafico risultante finale è il seguente
 
-![](ar-lesson11-img8.png)
+![[ar-lesson11-img8.png]]
 
 Riassumendo:
 - quando la coppia $(a,c)$ cade nell'area blu, allora il processo di diffusione di `A` si blocca definitivamente in un passo.

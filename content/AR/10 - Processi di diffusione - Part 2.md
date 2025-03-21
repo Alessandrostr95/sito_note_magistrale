@@ -11,68 +11,106 @@ In effetti questo è un ragionamento abbastanza ragionevole anche applicato in u
 
 Sorge però la domanda:
 
+> [!example] Example
 > Esiste una conformazione di una rete infinita in cui si può ottenere una capacita di cascata maggiore di $\frac{1}{2}$?
 > Ovvero, è possibile fare in modo che si adotti `A`, nonostante `B` sia più conveniente?
 
 Per fortuna la risposta è **no**, e questo verrà dimostrato nel seguente teorema
 
-> **THM** Per ogni grafo infinito $G=(\mathbb{N},E)$ i cui nodi hanno grado finito, la capacità di cascata di $G$ è al più $q_G \leq \frac{1}{2}$.
+> [!theorem] Theorem
+> Per ogni grafo infinito $G=(\mathbb{N},E)$ i cui nodi hanno grado finito, la capacità di cascata di $G$ è al più $q_G \leq \frac{1}{2}$.
 
-> **Proof** Supponiamo <u>per assurdo</u> che esista un insieme **finito** di iniziatori $V_0$, che nonostante ci sia una soglia di adozione $q > \frac{1}{2}$, genera comunque una cascata completa dell'innovazione `A`.
+> [!help] Proof
+> Supponiamo <u>per assurdo</u> che esista un insieme **finito** di iniziatori $V_0$, che nonostante ci sia una soglia di adozione $q > \frac{1}{2}$, genera comunque una cascata completa dell'innovazione `A`.
 > 
-> Definiamo con $V_t$ l'insieme di nodi che adottano `A` al tempo $t \geq 0$, con l'insieme $$S_t \equiv \bigcup_{i = 0}^{t} V_t$$
+> Definiamo con $V_t$ l'insieme di nodi che adottano `A` al tempo $t \geq 0$, con l'insieme
+> $$
+> S_t \equiv \bigcup_{i = 0}^{t} V_t
+> $$
 > l'insieme di tutti i nodi che al tempo $t$ si trovano nello stato `A`.
 > 
-> Definiamo con $I_t$ l'insieme di archi del **taglio** $(S_t, V \setminus S_t)$, ovvero $$I_t \equiv \lbrace (u,v) : u \in S_t \land v \in V \setminus S_t \rbrace$$
+> Definiamo con $I_t$ l'insieme di archi del **taglio** $(S_t, V \setminus S_t)$, ovvero
+> $$
+> I_t \equiv \lbrace (u,v) \mid u \in S_t \land v \in V \setminus S_t \rbrace
+> $$
 >
-> Dato che $V_0$ genera una *cascata completa* di `A` con soglia di adozione $q > 0.5$, si può dimostrare che per ogni $t \geq 0$, allora è vero che $$\vert I_t \vert > \vert I_{t+1} \vert \;\; \mbox{oppure} \;\; I_t \equiv I_{t+1}$$
+> Dato che $V_0$ genera una *cascata completa* di `A` con soglia di adozione $q > 0.5$, si può dimostrare che per ogni $t \geq 0$, allora è vero che
+> $$
+> \vert I_t \vert > \vert I_{t+1} \vert \;\; \text{oppure} \;\; I_t \equiv I_{t+1}
+> $$
+> 
 > Dato che il grado massimo di $G$ è **limitato**, allora $\vert I_0 \vert$ sarà una quantità finita $k > 0$.
 > Inoltre, è facile convincersi che il processo termina quando abbiamo che $I_t \equiv I_{t+1}$.
+> 
 > Però visto che $V_0$ genera un processo **infinito** di cascata di `A`, allora per ogni $t \geq 0$, non deve mai accadere che $I_t \equiv I_{t+1}$, ovvero accade sempre che $\vert I_t \vert > \vert I_{t+1} \vert$.
-> Ma ciò è assurdo, perché per via della dimensione finita di $I_0$, può accadere <u>al più</u> $k$ volte consecutive che il processo procedi.
+> 
+> Ma ciò è assurdo, perché per via della dimensione finita di $I_0$, può accadere **al più** $k$ volte consecutive che il processo procedi.
 > Perciò deve esistere necessariamente un tempo $\tau \geq k$, tale che $I_\tau \equiv I_{\tau + 1}$ (**assurdo**).
 > 
 > Procediamo quindi con la dimostrazione dei due eventi.
 > Per farlo, basta dimostrare la mutua esclusione degli eventi, ovvero che se $I_t \not\equiv I_{t+1}$ allora necessariamente $\vert I_t \vert > \vert I_{t+1} \vert$ (e implicando quindi che non può nemmeno mai accadere che $\vert I_t \vert < \vert I_{t+1} \vert$).
 > 
 > Se per ipotesi abbiamo che $I_t \not\equiv I_{t+1}$, ciò implica che esiste <u>almeno</u> un nodo $v$ che ha adottato `A` al tempo $t + 1$, e che quindi $V_{t+1} \neq \emptyset$.
-> Affinché ciò sia vero, è necessario che $v$ abbia <u>almeno</u> un vicino $u \in N(v)$ che è anche nello stato `A`, ovvero $u \in N(v) \cap S_t$.
+> Affinché ciò sia vero, è necessario che $v$ abbia **almeno** un vicino $u \in N(v)$ che è anche nello stato `A`, ovvero $u \in N(v) \cap S_t$.
 > 
-> Più in generale, per ogni nodo $v \in V_{t+1}$ esiste alemno un arco del tipo $(u,v) \in I_t$, inoltre tale arco non apparterrà a $I_{t+1}$.
+> Più in generale, per ogni nodo $v \in V_{t+1}$ esiste almeno un arco del tipo $(u,v) \in I_t$, inoltre tale arco non apparterrà a $I_{t+1}$.
 > Viceversa, tutti gli archi che apparterranno a $I_{t+1}$ certamente non erano in $I_t$.
 > 
-> ![$v \in V_{t+1}$: $v$ adotta `A` al tempo $t + 1$.](ar-lesson10-img1.png)
+> - **Figura:** $v \in V_{t+1}$: $v$ adotta `A` al tempo $t + 1$.
+> ![[ar-lesson10-img1.png]]
 > 
-> Perciò in base a quanto osservato (e anche osservando la [[ar-lesson10-img1.png|figura]]) avremo che $$I_{t+1} \equiv \left( I_t \; \setminus \; \left[ \bigcup_{v \in V_{t+1}} \lbrace (u,v) \in E : u \in S_t \rbrace \right] \right) \cup \left[ \bigcup_{v \in V_{t+1}} \lbrace (v,z) \in E : z \in V \setminus S_{t+1} \rbrace \right]$$
+> Perciò in base a quanto osservato (e anche osservando la [[ar-lesson10-img1.png|figura]]) avremo che
+> $$
+> I_{t+1} \equiv \left( I_t \; \setminus \; \left[ \bigcup_{v \in V_{t+1}} \lbrace (u,v) \in E : u \in S_t \rbrace \right] \right) \cup \left[ \bigcup_{v \in V_{t+1}} \lbrace (v,z) \in E : z \in V \setminus S_{t+1} \rbrace \right]
+> $$
 >
-> È anche facile verificare che $\forall v,w \in V_{t+1}$ $$
-\begin{equation*}
-\begin{split}
-\lbrace (u,v) \in E : u \in S_t \rbrace &\cap \lbrace (u,w) \in E : u \in S_t \rbrace = \emptyset\\
-&\land\\
-\lbrace (v,z) \in E : z \in V \setminus S_{t+1} \rbrace &\cap \lbrace (w,z) \in E : z \in V \setminus S_{t+1} \rbrace = \emptyset
-\end{split}
-\end{equation*}$$
+> È anche facile verificare che $\forall v,w \in V_{t+1}$
+> $$
+> \begin{equation*}
+> \begin{split}
+> \lbrace (u,v) \in E : u \in S_t \rbrace &\cap \lbrace (u,w) \in E : u \in S_t \rbrace = \emptyset\\
+> &\land\\
+> \lbrace (v,z) \in E : z \in V \setminus S_{t+1} \rbrace &\cap \lbrace (w,z) \in E : z \in V \setminus S_{t+1} \rbrace = \emptyset
+> \end{split}
+> \end{equation*}
+> $$
 > Per comprendere meglio la precedente conclusione, osservare la [[ar-lesson10-img2.png|seguente immagine]]
->
-> ![Esempio.|400](ar-lesson10-img2.png)
+> ![[ar-lesson10-img2.png]]
 > 
-> Tutto ciò implica che $$\vert I_{t+1} \vert = \vert I_t \vert - \sum_{v \in V_{t+1}} \vert \lbrace (u,v) \in E : u \in S_t \rbrace \vert + \sum_{v \in V_{t+1}} \vert \lbrace (v,z) \in E : z \in V \setminus S_{t+1} \rbrace \vert$$
+> Tutto ciò implica che
+> $$
+> \vert I_{t+1} \vert = \vert I_t \vert - \sum_{v \in V_{t+1}} \vert \lbrace (u,v) \in E : u \in S_t \rbrace \vert + \sum_{v \in V_{t+1}} \vert \lbrace (v,z) \in E : z \in V \setminus S_{t+1} \rbrace \vert
+> $$
 > Per semplificare la precedente formula, possiamo definire i seguenti insiemi come:
 > -   $\lbrace (u,v) \in E : u \in S_t \rbrace = N(v) \cap S_t$
 > -   $\lbrace (v,z) \in E : z \in V \setminus S_{t+1} \rbrace = N(u) \setminus S_{t+1}$
-> perciò la formula per $\vert I_{t+1} \vert$ risulterà essere: $$\begin{align*}
-\vert I_{t+1} \vert &= \vert I_t \vert - \sum_{v \in V_{t+1}} \vert N(v) \cap S_t \vert + \sum_{v \in V_{t+1}} \vert N(u) \setminus S_{t+1} \vert\\
-&= \vert I_t \vert - \sum_{v \in V_{t+1}} \left ( \vert N(v) \cap S_t \vert - \vert N(u) \setminus S_{t+1} \vert \right)
-\end{align*}$$
-> Osserviamo adesso che, dato che un $v \in V_{t+1}$ ha adottato il nuovo stato `A`, e dato che la soglia di adozione è $q > \frac{1}{2}$, allora più della metà dei suoi vicini era in $S_t$, ovvero $$\frac{\vert N(v) \cap S_t \vert}{\vert N(v) \vert} \geq q > \frac{1}{2}$$
-> oppure, visto in altri termini $$\vert N(v) \cap S_t \vert > \vert N(v) \setminus S_t \vert \geq \vert N(v) \setminus S_{t+1} \vert$$
-> Perciò avremo che $$\begin{align*}
-\vert I_{t+1} \vert &= \vert I_t \vert - \sum_{v \in V_{t+1}} \left ( \vert N(v) \cap S_t \vert - \vert N(u) \setminus S_{t+1} \vert \right)\\
-&\leq \vert I_t \vert - \sum_{v \in V_{t+1}} \left ( \vert N(v) \cap S_t \vert - \vert N(u) \setminus S_t \vert \right)\\
-&= \vert I_t \vert - \sum_{v \in V_{t+1}} 1 = \vert I_t \vert - \vert V_{t+1} \vert < \vert I_t \vert
-\end{align*}$$
-> dove l\'ultima disuguaglianza viene dall'assunzione che $V_{t+1} \neq \emptyset$ $\square$.
+> 
+> perciò la formula per $\vert I_{t+1} \vert$ risulterà essere:
+> $$
+> \begin{align*}
+> \vert I_{t+1} \vert &= \vert I_t \vert - \sum_{v \in V_{t+1}} \vert N(v) \cap S_t \vert + \sum_{v \in V_{t+1}} \vert N(u) \setminus S_{t+1} \vert\\
+> &= \vert I_t \vert - \sum_{v \in V_{t+1}} \left ( \vert N(v) \cap S_t \vert - \vert N(u) \setminus S_{t+1} \vert \right)
+> \end{align*}
+> $$
+> 
+> Osserviamo adesso che, dato che un $v \in V_{t+1}$ ha adottato il nuovo stato `A`, e dato che la soglia di adozione è $q > \frac{1}{2}$, allora più della metà dei suoi vicini era in $S_t$, ovvero
+> $$
+> \frac{\vert N(v) \cap S_t \vert}{\vert N(v) \vert} \geq q > \frac{1}{2}
+> $$
+> oppure, visto in altri termini
+> $$
+> \vert N(v) \cap S_t \vert > \vert N(v) \setminus S_t \vert \geq \vert N(v) \setminus S_{t+1} \vert
+> $$
+> 
+> Perciò avremo che
+> $$
+> \begin{align*}
+> \vert I_{t+1} \vert &= \vert I_t \vert - \sum_{v \in V_{t+1}} \left ( \vert N(v) \cap S_t \vert - \vert N(u) \setminus S_{t+1} \vert \right)\\
+> &\leq \vert I_t \vert - \sum_{v \in V_{t+1}} \left ( \vert N(v) \cap S_t \vert - \vert N(u) \setminus S_t \vert \right)\\
+> &= \vert I_t \vert - \sum_{v \in V_{t+1}} 1 = \vert I_t \vert - \vert V_{t+1} \vert < \vert I_t \vert
+> \end{align*}
+> $$
+> dove l'ultima disuguaglianza viene dall'assunzione che $V_{t+1} \neq \emptyset$ $\square$.
 
 ---------------------------
 # Modello eterogeneo
@@ -85,12 +123,16 @@ In questo caso possiamo modellare i vantaggi tra le coppie di invidui con un `A-
 
 Perciò, se un nodo $v$ ha una frazione $p$ di vicini nello stato `A` e una frazione $(1-p)$ nello stato `B`, il guadagno scegliendo `A` sarà $pa_v$ e quello rimanendo in `B` sarà $(1-p)b_v$. 
 
-Perciò possiamo affermare che `A` è una scelta migliore se $$p \geq \frac{b_v}{a_v + b_v}$$
+Perciò possiamo affermare che `A` è una scelta migliore se 
+$$
+p \geq \frac{b_v}{a_v + b_v}
+$$
 Definiamo con $q_v = \frac{b_v}{a_v + b_v}$ la personale **soglia di adozione** dell'individuo $v$.
 
 Consideriamo il seguente esempio, con insieme di nodi iniziatori $V_0 = \lbrace 1 \rbrace$.
 
-![Esempio giocattolo, con $V_0 = \lbrace 1 \rbrace$.](ar-lesson10-img4.png)
+- **Figura:** Esempio giocattolo, con $V_0 = \lbrace 1 \rbrace$.
+![[ar-lesson10-img4.png]]
 
 Osservare che il nodo 1 è una elemento abbastanza centrale nella comunità $\lbrace 1,2,3,4,5,6 \rbrace$.
 
@@ -98,18 +140,27 @@ Purtroppo, nonostante la sua posizione strategica, è dificcile che riesca a con
 Per fortuna c'è il vicino 3 che è **facilmente influenzabile**, il quale ha una soglia di adozione $q_3 = 0.1$ parecchio più bassa degli altri.
 Perciò, se 1 riesce a convincere il nodo 3 ad adottare `A`, allora si scatenerebbe una cascata su tutta la comunità $\lbrace 1,2,3,4,5,6 \rbrace$.
 
-![](ar-lesson10-img5.png)
+![[ar-lesson10-img5.png]]
 
-Ciò ci suggerisce che scegliere un iniziatore in un posto strategico non è più una **condizione sufficiente** a garantire la diffusione di `A`, quantomeno all\'interno di una comunità.
+Ciò ci suggerisce che scegliere un iniziatore in un posto strategico non è più una **condizione sufficiente** a garantire la diffusione di `A`, quantomeno all'interno di una comunità.
 Invece, è necessario che gli iniziatori abbiano anche la possibilità di avere accesso a individui **facilmente influenzabili**.
 
-Ricordiamo che nel modello omogeneo ciò che impediva una cascata completa era la presenza di **cluster di densita** $1 - q$, ovvero un sottoinsieme di nodi $V'$ tale che $$\frac{\vert N(u) \cap V' \vert}{\vert N(u) \vert} \geq 1 - q \;\; \forall u \in V'$$
-Analogamente per il modello eterogeneo, definiamo i **blocking cluster** quei sottoinsiemi di nodi $V'$ tali che $$\frac{\vert N(u) \cap V' \vert}{\vert N(u) \vert} \geq 1 - q_u \;\; \forall u \in V'$$
+Ricordiamo che nel modello omogeneo ciò che impediva una cascata completa era la presenza di **cluster di densità** $1 - q$, ovvero un sottoinsieme di nodi $V'$ tale che
+$$
+\frac{\vert N(u) \cap V' \vert}{\vert N(u) \vert} \geq 1 - q \;\; \forall u \in V'
+$$
+
+Analogamente per il modello eterogeneo, definiamo i **blocking cluster** quei sottoinsiemi di nodi $V'$ tali che 
+$$
+\frac{\vert N(u) \cap V' \vert}{\vert N(u) \vert} \geq 1 - q_u \;\; \forall u \in V'
+$$
+
 Anche per il modello eterogeno, la presenza di tali strutture è un ostacolo alle cascate complete!
 
 Tale osservazione è formalmente espressa dal seguente teorema
 
-> **THM** Sia il grafo $G=(V,E)$ e l\'insieme di iniziatori $V_0 \subseteq V$. L\'insieme $V_0$ **non** genera una cascata completa di `A` **se e solo so** $G-V_0$ congiene un *blocking cluster*.
+> [!theorem] Theorem
+> Sia il grafo $G=(V,E)$ e l\'insieme di iniziatori $V_0 \subseteq V$. L\'insieme $V_0$ **non** genera una cascata completa di `A` **se e solo so** $G-V_0$ congiene un *blocking cluster*.
 
 -----------------------------
 # Azioni collettive
@@ -173,10 +224,8 @@ Questo fenomeno è conosciuto come **ignoranza pluralistica**.
 A conferma di quanto detto, nell'ultimo esempio si riesce a prendere una decisione collettiva proprio perché i nodi $u,v,w$ disponevano di una stessa **base d'informazioni comune**.
 
 
-
 [[11 - Processi di diffusione - Part 3|lezione successiva →]]
 
 
-------
 
 [^1]: $v$ è il $k_v$-esimo partecipante.
