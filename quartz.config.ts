@@ -8,7 +8,7 @@ import * as Plugin from "./quartz/plugins"
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "Quartz 4",
+    pageTitle: "💾 Note Magistrale In Informatica @ Tor Vergata",
     pageTitleSuffix: "",
     enableSPA: true,
     enablePopovers: true,
@@ -72,6 +72,8 @@ const config: QuartzConfig = {
       Plugin.CrawlLinks({ markdownLinkResolution: "shortest" }),
       Plugin.Description(),
       Plugin.Latex({ renderEngine: "katex" }),
+      // Plugin.Latex({ renderEngine: "mathjax" }),
+      // Plugin.Latex({ renderEngine: "typst" }),
     ],
     filters: [Plugin.RemoveDrafts()],
     emitters: [
