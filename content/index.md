@@ -73,4 +73,14 @@ A tal punto, sarei anche grato se voi mi notificasse eventuali errori, aprendo d
 
 
 -------
+
+# Changelog
+
+Fixed pages:
+-  [[1 - Erdos-Renyi Random Graph]]
+- [[2 - Power Law]] 
+- [[4 - Grafi geometrici aleatori]]
+
+
+
 [^1]: in realtà non mi va di rivedermi tutte le note prese in magistrale e di sistemarle tutte quante in maniera seria.
