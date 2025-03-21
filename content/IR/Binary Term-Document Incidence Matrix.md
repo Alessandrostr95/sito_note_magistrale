@@ -19,29 +19,36 @@ Costruiamo poi una matrice $M \times N$ dove ad ogni riga è associato un termin
 In tale matrice, poniamo la cella $(i,j)$ pari a $1$ se il termine $i$-esimo è contenuto nel documento $j$-esimo, $0$ altrimenti.
 Questa è detta **matrice d'incidenza**.
 
-\\ | **Antony and Cleopatra** | **Julius Caesar** | **The Tempest** | **Hamlet** | **Othello** | **Macbeth** | ...
----|---|---|---|---|---|---|---
-**Antony** | 1 | 1 | 0 | 0 | 0 | 1 | ...
-**Brutus** | 1 | 1 | 0 | 1 | 0 | 0 | ...
-**Caesar** | 1 | 1 | 0 | 1 | 1 | 1 | ...
-**Calpurnia** | 0 | 1 | 0 | 0 | 0 | 0 | ...
-**Cleopatra** | 1 | 0 | 0 | 0 | 0 | 0 | ...
-**mercy** | 1 | 0 | 1 | 1 | 1 | 1 | ...
-**worser** | 1 | 0 | 1 | 1 | 1 | 0 | ...
-... | ... | ... | ... | ... | ... | ... | ...
+| \\            | **Antony and Cleopatra** | **Julius Caesar** | **The Tempest** | **Hamlet** | **Othello** | **Macbeth** | ... |
+| ------------- | ------------------------ | ----------------- | --------------- | ---------- | ----------- | ----------- | --- |
+| **Antony**    | 1                        | 1                 | 0               | 0          | 0           | 1           | ... |
+| **Brutus**    | 1                        | 1                 | 0               | 1          | 0           | 0           | ... |
+| **Caesar**    | 1                        | 1                 | 0               | 1          | 1           | 1           | ... |
+| **Calpurnia** | 0                        | 1                 | 0               | 0          | 0           | 0           | ... |
+| **Cleopatra** | 1                        | 0                 | 0               | 0          | 0           | 0           | ... |
+| **mercy**     | 1                        | 0                 | 1               | 1          | 1           | 1           | ... |
+| **worser**    | 1                        | 0                 | 1               | 1          | 1           | 0           | ... |
+| ...           | ...                      | ...               | ...             | ...        | ...         | ...         | ... |
 
-Perciò, per ottenere i documenti che rispettano l'espressione $$\text{Brutus } AND \text{ Caesar } AND \; NOT \text{ Calpurnia}$$ basta prendere la riga **indicizzata** dai termini `Brutus` e `Caesar`, poi prendere la riga indicizzata da `Calpurnia` ma **complementata**, per poi fare il **bitwise AND**
-$$\begin{align}
+Perciò, per ottenere i documenti che rispettano l'espressione
+$$
+\text{Brutus } AND \text{ Caesar } AND \; NOT \text{ Calpurnia}
+$$
+basta prendere la riga **indicizzata** dai termini `Brutus` e `Caesar`, poi prendere la riga indicizzata da `Calpurnia` ma **complementata**, per poi fare il **bitwise AND**
+$$
+\begin{align*}
 &&110100\\
 \land &&110111\\
 \land &&101111\\
 \hline
 = &&100100
-\end{align}$$
+\end{align*}
+$$
+
 Alla fine i documenti interessati saranno quelli per i quali il relativo bit è pari ad 1, nel nostro caso i documenti `Antony and Cleopatra` e `Hamlet`.
 
 Questo approccio è detto **Boolean retrieval model**.
-In tale modello le query sono della forma di **espressioni booleane di termini**, dove i termini sono combinati tramite gli **opeartori logici** `AND`, `OR` e `NOT`.
+In tale modello le query sono della forma di **espressioni booleane di termini**, dove i termini sono combinati tramite gli **operatori logici** `AND`, `OR` e `NOT`.
 
 ```julia
 M::BitMatrix

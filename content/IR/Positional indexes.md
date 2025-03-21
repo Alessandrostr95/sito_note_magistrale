@@ -56,9 +56,11 @@ Così facendo, per processare la **phrase query** `standford university palo alt
 Ovvero i documenti che faranno parte della risposta sono tutti quei documenti per i quali esiste (almeno) un indice $k$ tale che:
 - il primo termine `standford` appare in posizione $k$
 - il secondo termine `university` apparte in posizione $k+1$
-- il terzo termine `palo` apparte in posizione $k+2$
-- il quarto termine `alto` apparte in posizione $k+3$
-$$\langle k, k+1, k+2, k+3 \rangle$$
+- il terzo termine `palo` appare in posizione $k+2$
+- il quarto termine `alto` appare in posizione $k+3$
+$$
+\langle k, k+1, k+2, k+3 \rangle
+$$
 
 ```julia
 function positional_intersection(

@@ -1,24 +1,21 @@
 Un'osservazione che si può fare è che la [[Binary Term-Document Incidence Matrix|matrice d'incidenza]] per molti **termini d'interesse** (nomi, luoghi, ecc...) è piena di zeri, ovvero è **sparsa**.
 
-```ad-note
-Certamente per molti termini, come gli articoli, ci sono molti 1.
-Però generalemte non si fanno query in cui richiedo tutti i documenti con il termine `the`, perché certamente tutti i documenti saranno compresi nella risposta.
-```
+> [!note]
+> Certamente per molti termini, come gli articoli, ci sono molti 1.
+> Però generalemte non si fanno query in cui richiedo tutti i documenti con il termine `the`, perché certamente tutti i documenti saranno compresi nella risposta.
 
 Perciò per ottimizzare possiamo pensare di usare un **dizionario** di termini (detto anche **vocabolario** o **lexicon**), dove per ogni termine conserviamo una **lista di documenti** nei quali occorrono.
 Tale lista è anche detta **posting list**. ^5dc20c
 
-![](./img/IR_boolean_retrieval_1.png)
+![[IR_boolean_retrieval_1.png]]
 
-```ad-important
-Nella costruzione di un indice inverso, assumiamo che viene costruito in modo tale che sia i termini sia le loro posting lists sono mantenute **oridnate**.
-```
+> [!important]
+> Nella costruzione di un indice inverso, assumiamo che viene costruito in modo tale che sia i termini sia le loro posting lists sono mantenute **oridnate**.
 
-```ad-note
-Anche se in termini di efficienza è dispendioso mantenere l'ordinamento a fronte di **inserimenti** e **rimozioni**.
-
-Però nell'almbito dell IR non si vuole gestire un numero elevato di inserimenti, rimozioni o update.
-```
+> [!note]
+> Anche se in termini di efficienza è dispendioso mantenere l'ordinamento a fronte di **inserimenti** e **rimozioni**.
+>
+> Però nell'almbito dell IR non si vuole gestire un numero elevato di inserimenti, rimozioni o update.
 
 ---------------
 # Inverted Index Construction
@@ -76,7 +73,10 @@ tokens::Vector{String} = document |> split |> (d -> replace.(d, "." => "", "'" =
 Ci sono termini che sono contenuti in **ogni** documento, come pre esempio gli articoli, le congiunzioni, le proposizioni, ecc...
 
 Per esempio, se ricerco la frase *"President of the United States"* gli unici termini realmente utili alla ricerca sono *"President"* e *"United States"*.
-Infatti, molto probabilmente la mia ricerca sarà un query del tipo $$\text{president } \land \text{ united states}$$
+Infatti, molto probabilmente la mia ricerca sarà un query del tipo 
+$$
+\text{president } \land \text{ united states}
+$$
 Perciò, possiamo pensare di rimuovere tutte quelle parole con altissima frequenza in una lingua, e che non hanno utilità ai fini di una ricerca.
 Tali parole sono dette **stop words**.
 
@@ -108,7 +108,7 @@ equivalen_class = Dict(
 ```
 
 ## Stemming and Lemmatization
-[TODO]
+==🚧TODO🚧==
 
 -------------
 # Implementazione degli operatori
@@ -132,7 +132,7 @@ function intersect(
 		L₂::AbstractVector{T}
 	)::AbstractVector{T} where T
 	"""
-		- **complexity**: 2*min(length(L₁), length(L₂))
+		- **complexity**: length(L₁) + length(L₂)
 		- **output size**: 0 ≤ length(result) ≤ min(length(L₁), length(L₂))
 	"""
 	
@@ -155,6 +155,18 @@ function intersect(
 	result
 end
 ```
+
+
+> [!warning]
+> A lezione ti potrebbero dire che il costo dell'intersection è $O(\min\{|L_1|, |L_2|\})$.
+> Ora ti do un'istanza:
+> - $L_1 = \left[ a_1, a_2, \dots, a_{|L_1|}\right]$
+> - $L_2 = \left[ b_1, b_2, \dots, b_{|L_2|}\right]$
+> 
+> Con $b_{|L_2| - 1} < a_1$ e $b_{|L_2|} > a_{|L_1|}$.
+> Tenendo conto che $L_1, L_2$ sono ordinati, quanto vi costa eseguire l'algoritmo su queste istanze?
+
+
 
 ## Union
 ```julia
@@ -229,7 +241,16 @@ end
 ```
 
 ## Optimizations of queries
-Consideriamo la query $$\text{Brutus} \land \text{Calpurnia} \land \text{Caesar}$$
+
+> [!error]
+> Queste note sono sbagliate, in quanto si basano su un'analisi fatta a lezione che assumeva una complessità **errata** dell'operazione di intersezione.
+> Ho comunque riportato quanto fatto a lezione, in quanto questo tipo di analisi (seppur errata) potrebbe essere richiesta all'esame.
+
+
+Consideriamo la query 
+$$
+\text{Brutus} \land \text{Calpurnia} \land \text{Caesar}
+$$
 Ci sono tre modi di eseguirla:
 1. (**Brutus** AND **Calpurnia**) AND **Caesar** ^e7d5bd
 2. **Brutus** AND (**Calpurnia** AND **Caesar**) ^b0a38b
@@ -243,10 +264,17 @@ Consideriamo la [[#^e7d5bd|prima implementazione]].
 La complessità dell'intersezione `intersect(brutus, calpurnia)` sarà $2 \min{\lbrace n, m\rbrace} = O(n)$.
 La lista risultante avrà lunghezza $\leq n$.
 Dopodichè, intersecando il risultato precedente con la posting list di `caesar` avremo una complessità di $\leq 2 \min{\lbrace n, \ell \rbrace} = O(n)$.
-In totale la complessità sarà $$O(n)$$
+In totale la complessità sarà 
+$$
+O(n)
+$$
 
 Consideriamo ora la [[#^b0a38b|seconda implementazione]].
-In tal caso la prima intersezione avrà complessità $O(m)$ mentre la seconda $O(n)$, per un totale di $$O(n + m) \in O(m)$$ potenzialmente significativamente peggiore della precedente.
+In tal caso la prima intersezione avrà complessità $O(m)$ mentre la seconda $O(n)$, per un totale di 
+$$
+O(n + m) \in O(m)
+$$
+potenzialmente significativamente peggiore della precedente.
 
 Perciò l'approccio migliore per intersecare più di due posting list è quello di intersecare sempre prima quella di lunghezza minima, per poi iterare.
 ```julia
@@ -265,9 +293,9 @@ end
 
 Alla luce di quanto osservato, conviene salvarsi per ogni termine la **frequenza** con i quali occorrono nella collezione di documenti.
 
-![](./img/IR_boolean_retrieval_2.png)
+![[IR_boolean_retrieval_2.png]]
 
-----------
+-------------------
 ### Exercise 1
 Sia la query
 

@@ -3,14 +3,15 @@ Questo processo è noto come **index construction** o **indexing** (**indicizz
 
 Generalmente quando si progetta un sistema di IR lo si fa in base alle caratteristiche hardware sul quale dovrà essere implementato.
 
-Symbol | Statistic | Value
-:---:|---|---
-$\sigma$ | average seek time | $5 \text{ ms} = 5 \times 10^{-3} \text{ s}$
-$b$ | transfer time per byte | $0.02 \; \mu s = 2 \times 10^{-8} \text{ s}$
-\ | processor's clock rate | $10^9 s^{-1}$
-$p$ | lowlevel operation (e.g., compare & swap a word) | $0.01 \; \mu s = 10^{-8} \text{ s}$
-\ | size of main memory | several GB
-\ | size of disk space | 1 TB or more
+|  Symbol  | Statistic                                         | Value                                        |
+| :------: | ------------------------------------------------- | -------------------------------------------- |
+| $\sigma$ | average seek time                                 | $5 \text{ ms} = 5 \times 10^{-3} \text{ s}$  |
+|   $b$    | transfer time per byte                            | $0.02 \; \mu s = 2 \times 10^{-8} \text{ s}$ |
+|          | processor's clock rate                            | $10^9 s^{-1}$                                |
+|   $p$    | low-level operation (e.g., compare & swap a word) | $0.01 \; \mu s = 10^{-8} \text{ s}$          |
+|          | size of main memory                               | several GB                                   |
+|          | size of disk space                                | 1 TB or more                                 |
+
 
 Bisogna infatti tenere conto delle seguenti proprietà dell'hardware:
 1. L'accesso alla memoria è ordini di grandezza più veloce rispetto all'accesso su disco. Di conseguenza vogliamo tenere in memoria quanti più dati possibili, specialmente quei dati per i quali abbiamo bisogno di frequente accesso. La tecnica di tenere in memoria i dati più frequentemente accessi è anche detta **caching**.
@@ -24,7 +25,10 @@ I problemi che generalmente possiamo trovare nello sviluppo di un indice sono:
 2. non abbiamo a disposizione nemmeno abbastanza spazio su disco per il nostro indice, e quindi abbiamo bisogno di implementarlo in maniera **distribuita**.
 3. abbiamo bisogno di generare un indice che sia **dinamico**, ovvero che consenta nella maniera più efficiente possibile di effettuare operazioni di rimozione, inserimento e modifica dei documenti.
 
-- [[Blocked sort-based indexing]] - BSBI
-- [[Single-pass in-memory indexing]] - SPIMI
-- [[Distributed indexing]]
-- [[Dynamic indexing]]
+#### [[Blocked sort-based indexing]] - BSBI
+
+#### [[Single-pass in-memory indexing]] - SPIMI
+
+#### [[Distributed indexing]]
+
+#### [[Dynamic indexing]]

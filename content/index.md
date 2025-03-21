@@ -77,16 +77,24 @@ A tal punto, sarei anche grato se voi mi notificasse eventuali errori, aprendo d
 # Changelog
 
 Fixed pages:
-- [[1 - Erdos-Renyi Random Graph]]
-- [[2 - Power Law]] 
-- [[4 - Grafi geometrici aleatori]]
-- [[6 - Small World]]
-- [[7 - Communities - Part 1]]
-- [[8 - Communities - Part 2]]
-- [[9 - Processi di diffusione - Part 1]]
-- [[10 - Processi di diffusione - Part 2]]
-- [[11 - Processi di diffusione - Part 3]]
-
+- Analisi di reti:
+	- [[1 - Erdos-Renyi Random Graph]]
+	- [[2 - Power Law]] 
+	- [[4 - Grafi geometrici aleatori]]
+	- [[6 - Small World]]
+	- [[7 - Communities - Part 1]]
+	- [[8 - Communities - Part 2]]
+	- [[9 - Processi di diffusione - Part 1]]
+	- [[10 - Processi di diffusione - Part 2]]
+	- [[11 - Processi di diffusione - Part 3]]
+- Information Retrieval
+	- [[Boolean Retrieval]]
+		- [[Binary Term-Document Incidence Matrix]]
+		- [[Inverted Index]]
+		- [[Positional postings and phrase queries]]
+			- [[Biword Indexes]]
+			- [[Positional indexes]]
+	- [[Index construction]]
 
 
 
