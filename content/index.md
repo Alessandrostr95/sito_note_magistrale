@@ -80,6 +80,8 @@ Fixed pages:
 -  [[1 - Erdos-Renyi Random Graph]]
 - [[2 - Power Law]] 
 - [[4 - Grafi geometrici aleatori]]
+- [[6 - Small World]]
+- [[7 - Communities - Part 1]]
 
 
 
