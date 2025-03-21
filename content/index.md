@@ -5,8 +5,10 @@ author: Alessandro Straziota
 > [!warning] 🚧 WORK IN PROGRESS 🚧
 > Questo sito è ancora in costruzione, e perciò le diverse pagine riportano parecchi bug nel rendering (soprattutto delle formule).
 
-
 ## [Autore di questo sito 🌱](https://alessandrostr95.github.io/alessandro-straziota/)
+
+
+![[2c72c950e673cf78cd10f3bffbe32133.jpg]]
 
 # Introduzione
 Queste note nascono come appunti personali, scritti subito dopo le lezioni durante la mia magistrale. Non erano pensate per essere condivise, ma semplicemente per aiutarmi a fissare i concetti nel momento in cui li avevo appena sentiti. Di conseguenza, non hanno la chiarezza e la struttura di un testo pensato per un pubblico: ci sono errori, parti incomplete e scelte organizzative che riflettono più il mio modo di apprendere che una logica di facile consultazione.
@@ -51,7 +53,10 @@ richiedo un aiuto/incentivo economico per portare avanti questo progetto e offri
 Insomma, tutto questo lavoro, almeno una birra me la potete offrire.
 
 > [!important] Offerta libera
-> [Link PayPal](https://paypal.me/AlessandroStraziota?country.x=IT&locale.x=it_IT)
+> [Link PayPal](https://paypal.me/AlessandroStraziota?country.x=IT&locale.x=it_IT), oppure scannerizza il qr-code
+> 
+> ![[qrcode-paypal.png|450]]
+
 
 
 A tal punto, sarei anche grato se voi mi notificasse eventuali errori, aprendo delle issue sulla [repository github](https://github.com/Alessandrostr95/sito_note_magistrale/issues).
