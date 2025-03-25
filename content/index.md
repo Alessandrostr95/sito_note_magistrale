@@ -69,9 +69,8 @@ A tal punto, sarei anche grato se voi mi notificasse eventuali errori, aprendo d
 -  [[AR/0 -Analisi di reti|Analisi di reti]]
 -  [[ADRC|Algoritmi distribuiti e Reti Complesse]] 🚧 ==coming soon== 🚧
 	- [[GT|Game Theory]] 🚧 ==coming soon== 🚧
-
-## Secondo anno
 - [[0 - Inferenza Statistica e Teoria dell'Informazione|Inferenza Statistica e Teoria dell'Informazione]]
+## Secondo anno
 - [[0 - Information Retrieval|Information Retrieval]]
 - [[0 - Machine Learning|Machine Learning]]
 - [[0 - Natural Language Processing|Natural Language Processing]]
@@ -92,6 +91,7 @@ Fixed pages:
 	- [[9 - Processi di diffusione - Part 1]]
 	- [[10 - Processi di diffusione - Part 2]]
 	- [[11 - Processi di diffusione - Part 3]]
+	- [[12 - Herding]]
 - Information Retrieval
 	- [[Boolean Retrieval]]
 		- [[Binary Term-Document Incidence Matrix]]
@@ -100,7 +100,6 @@ Fixed pages:
 			- [[Biword Indexes]]
 			- [[Positional indexes]]
 	- [[Index construction]]
-
 
 
 [^1]: in realtà non mi va di rivedermi tutte le note prese in magistrale e di sistemarle tutte quante in maniera seria.
