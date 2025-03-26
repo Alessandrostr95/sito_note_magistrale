@@ -94,9 +94,11 @@ Fixed pages:
 	- [[10 - Processi di diffusione - Part 2]]
 	- [[11 - Processi di diffusione - Part 3]]
 	- [[12 - Herding]]
+	- [[13 - Sistemi di voto - Part 1]]
 - Algoritmi Distribuiti e Reti Complesse
 	- [[Lesson 2]]
 	- [[Lesson 3]]
+	- [[Lesson 4]]
 - Information Retrieval
 	- [[Boolean Retrieval]]
 		- [[Binary Term-Document Incidence Matrix]]

@@ -42,7 +42,7 @@ Alcuni esempi di eventi possono essere:
 -   la ricezioni di un messaggio (*evento esterno al nodo*)
 -   un *impulso* esterno alla rete
 
-Anche se in un contesto reale gli eventi avvengono su una *linea temporale discreta*[^3], essi verranno considerati essere avvenuti in maniera **sequenziale** (o ordinata). Questo perché in un intervallo di tempo continuo, la probabilità che due eventi indipendenti occorrano nello stesso identico istante è pari a $0$.
+Anche se in un contesto reale gli eventi avvengono su una *linea temporale discreta*, essi verranno considerati essere avvenuti in maniera **sequenziale** (o ordinata). Questo perché in un intervallo di tempo continuo, la probabilità che due eventi indipendenti occorrano nello stesso identico istante è pari a $0$.
 
 ### Azioni
 
@@ -191,7 +191,7 @@ Ho la certezza che non sono mai evvenute *failures* e mai avverranno.
 
 ### Topological restriction
 
-##### 1.  Connection
+##### 1.  Connectivity
 Il grafo $G$ è connesso.
 
 ### Knowledge Restrictions
@@ -224,9 +224,6 @@ Notare che, se un messaggio per arrivare dal nodo $a$ al nodo $b$ necessita di e
 [^1]: generalmente viene usato un **registro di stato** apposito
 
 [^2]: gli algoritmi distribuiti sono anche detti protocolli
-
-[^3]: io direi **approssimativamente discreta**, in quanto (a parer mio)
-    non c\'è certezza dell\'esistenza del continuo
 
 [^4]: non conoscono la topologia del grafo
 

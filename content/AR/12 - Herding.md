@@ -78,7 +78,10 @@ A questo punto, dal quinto giocatore in poi, si genera una *cascata informativa*
 Per formalizzare meglio la meccanica precedentemente descritta è necessario enunciare il **Teorema di Bayes**.
 
 > [!theorem] Teorema di Bayes
-> Siano i due eventi $A,B \in \Omega$ di probabilità **non nulla**, allora $$\mathcal{P}(A | B) = \frac{\mathcal{P}(B | A) \cdot \mathcal{P}(A)}{ \mathcal{P}(B) }$$
+> Siano i due eventi $A,B \in \Omega$ di probabilità **non nulla**, allora
+> $$
+> \mathcal{P}(A \mid B) = \frac{\mathcal{P}(B \mid A) \cdot \mathcal{P}(A)}{ \mathcal{P}(B) }
+> $$
 
 ^967e98
 
