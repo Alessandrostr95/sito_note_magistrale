@@ -41,6 +41,8 @@ In poche parole, molte parti di queste note ancora presentano problemi di compat
 Per esempio queste note [[1 - Erdos-Renyi Random Graph]], [[2 - Power Law]] e [[4 - Grafi geometrici aleatori]] sono state fixate, e sono perfettamente leggibili.
 Molte altre invece, come [[Adaboost]] o [[Probabilistic Ranking Principle]] sono ben lontane dall'essere utilizzabili.
 
+![[process.png]]
+
 Sistemare tutte le note, mi richiederà un ==grosso effort==, e svariate ore di lavoro.
 Dato che:
 1. nessuno mi paga per fare questo lavoro;
@@ -67,8 +69,8 @@ A tal punto, sarei anche grato se voi mi notificasse eventuali errori, aprendo d
 
 ## Primo anno
 -  [[AR/0 -Analisi di reti|Analisi di reti]]
--  [[ADRC|Algoritmi distribuiti e Reti Complesse]] 🚧 ==coming soon== 🚧
-	- [[GT|Game Theory]] 🚧 ==coming soon== 🚧
+-  [[Algoritmi Distribuiti e Reti Complesse]] 
+	- [[Algorithmic Game Theory]] 🚧 ==coming soon== 🚧
 - [[0 - Inferenza Statistica e Teoria dell'Informazione|Inferenza Statistica e Teoria dell'Informazione]]
 ## Secondo anno
 - [[0 - Information Retrieval|Information Retrieval]]
@@ -92,6 +94,9 @@ Fixed pages:
 	- [[10 - Processi di diffusione - Part 2]]
 	- [[11 - Processi di diffusione - Part 3]]
 	- [[12 - Herding]]
+- Algoritmi Distribuiti e Reti Complesse
+	- [[Lesson 2]]
+	- [[Lesson 3]]
 - Information Retrieval
 	- [[Boolean Retrieval]]
 		- [[Binary Term-Document Incidence Matrix]]

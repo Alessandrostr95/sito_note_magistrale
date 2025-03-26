@@ -7,7 +7,7 @@ tags:
   - Probability
   - Network
   - NetworkAnalysis
-aut: Alessandro Straziota
+author: Alessandro Straziota
 title: Analisi di Reti
 ---
 # Analisi di Reti

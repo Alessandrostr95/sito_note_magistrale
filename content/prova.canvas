@@ -1,0 +1,32 @@
+{
+	"nodes":[
+		{"id":"fd1ba1be18a2f07e","type":"text","text":"Emacs + org-mode","x":-161,"y":-476,"width":250,"height":176},
+		{"id":"0aeefb0e76d4be81","type":"file","file":"org-mode-logo.png","x":-20,"y":-420,"width":86,"height":93},
+		{"id":"397ce24fef44bcce","type":"file","file":"emacs-logo.png","x":-140,"y":-420,"width":93,"height":93,"color":"6"},
+		{"id":"e81fc31292f1ab7d","type":"text","text":"Obsidina + markdown","x":-161,"y":-140,"width":250,"height":176},
+		{"id":"98b0c79aeacc66df","type":"file","file":"obsidian-logo.png","x":-140,"y":-82,"width":91,"height":91},
+		{"id":"9d1cf08d7a67ce24","type":"file","file":"markdown-logo.png","x":-36,"y":-68,"width":100,"height":62},
+		{"id":"b9d402628b24ead4","type":"text","text":"First year notes in `.org` format","x":179,"y":-474,"width":300,"height":171},
+		{"id":"cdb59c0ca3e8d765","type":"file","file":"documents.png","x":278,"y":-415,"width":101,"height":88},
+		{"id":"42affd09ee06a333","type":"text","text":"All the notes in `.md` format","x":620,"y":-137,"width":260,"height":171},
+		{"id":"a5bfe0eeb7c96b43","type":"file","file":"documents.png","x":700,"y":-68,"width":101,"height":88},
+		{"id":"4a286ef1824042ef","type":"text","text":"pandoc","x":621,"y":-474,"width":260,"height":171},
+		{"id":"5b5e06bef26269d0","type":"file","file":"pandoc-logo.png","x":640,"y":-415,"width":220,"height":89,"color":"#000000"},
+		{"id":"2fe6aba0f22e074e","type":"text","text":"Quartz 4","x":321,"y":174,"width":219,"height":141},
+		{"id":"261c3cfe01da2044","type":"text","text":"Me fixing formt bugs","x":321,"y":420,"width":219,"height":180},
+		{"id":"3e44256fc53e883a","type":"file","file":"050c67d862ec3acfaf52dab9d23428b1 1.jpg","x":361,"y":480,"width":100,"height":100},
+		{"id":"8c76ea63a2c9dabc","type":"file","file":"quartz-logo.png","x":431,"y":189,"width":80,"height":110},
+		{"id":"20e74e8c7b578cf2","type":"text","text":"This site","x":-6,"y":267,"width":191,"height":213},
+		{"id":"47e41fc0d79e20d7","type":"file","file":"2c72c950e673cf78cd10f3bffbe32133.jpg","x":24,"y":340,"width":132,"height":118}
+	],
+	"edges":[
+		{"id":"f1ecb8b263b44400","fromNode":"fd1ba1be18a2f07e","fromSide":"right","toNode":"b9d402628b24ead4","toSide":"left","color":"#000000"},
+		{"id":"873c16e7415511de","fromNode":"b9d402628b24ead4","fromSide":"right","toNode":"4a286ef1824042ef","toSide":"left","color":"#000000","label":"convert"},
+		{"id":"05796a08c6e823e5","fromNode":"4a286ef1824042ef","fromSide":"bottom","toNode":"42affd09ee06a333","toSide":"top","color":"#000000"},
+		{"id":"1d9391b6ba893ed1","fromNode":"e81fc31292f1ab7d","fromSide":"right","toNode":"42affd09ee06a333","toSide":"left","color":"#000000"},
+		{"id":"da5dd9f69568f2a8","fromNode":"42affd09ee06a333","fromSide":"bottom","toNode":"2fe6aba0f22e074e","toSide":"right","color":"#000000","label":"generate site"},
+		{"id":"7d3b81bf29b2a910","fromNode":"261c3cfe01da2044","fromSide":"right","toNode":"42affd09ee06a333","toSide":"right"},
+		{"id":"eb07aab7103126bf","fromNode":"2fe6aba0f22e074e","fromSide":"left","toNode":"20e74e8c7b578cf2","toSide":"top","color":"#000000"},
+		{"id":"5e41ab44dcdc7fa2","fromNode":"20e74e8c7b578cf2","fromSide":"bottom","toNode":"261c3cfe01da2044","toSide":"left","color":"#000000"}
+	]
+}
