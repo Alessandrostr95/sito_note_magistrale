@@ -31,7 +31,7 @@ title: Algoritmi Distribuiti e Reti Complesse
 - [[Lesson 6]]: **Wake-up Problem**
 - [[Lesson 7]]: **Distributed Spanning Tree**
 - **Leader Election**:
-	- [[Lesson 8]]: **All-the-way protocol**
+	- [[Lesson 8]]: **All-the-way and As-far protocols**
 	- [[Lesson 9]]: **Stage Technique**
 - [[Lesson 10]]: **Radio Networks**
 - [[Lesson 11]]: **Randomized Distributed Protocols**
