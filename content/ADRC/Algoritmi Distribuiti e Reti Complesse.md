@@ -35,7 +35,7 @@ title: Algoritmi Distribuiti e Reti Complesse
 	- [[Lesson 9]]: **Stage Technique**
 - [[Lesson 10]]: **Radio Networks**
 - [[Lesson 11]]: **Randomized Distributed Protocols**
-- [[Lesson 12]]: **Lower Bound per Protocolli Deterministici**
+- [[Lesson 12]]: **Lower Bound per Protocolli Deterministici** - **Randomized protocol for Unknown Radio Networks with Interferences**
 - [[Lesson 13]]: **The Gossip Models**
 - [[Lesson 14]]: **Expanders**
 - [[Lesson 15]]: **Majority Consensus**
