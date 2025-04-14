@@ -109,6 +109,7 @@ Fixed pages:
 	- [[Lesson 12]]
 	- [[Lesson 13]]
 	- [[Lesson 14]]
+	- [[Lesson 15]]
 - Information Retrieval
 	- [[Boolean Retrieval]]
 		- [[Binary Term-Document Incidence Matrix]]
