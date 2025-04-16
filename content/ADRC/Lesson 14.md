@@ -119,7 +119,7 @@ Data una sorgente $s$ dal quale far partire il broadcast di un messaggio `M`, il
 > $$
 > \begin{align*}
 > I_0 &= \lbrace s \rbrace\\
-> I_t &= \lbrace v \in V \; | \; v \mbox{ is informed in some round } t' \leq t \rbrace
+> I_t &= \lbrace v \in V \; | \; v \text{ is informed in some round } t' \leq t \rbrace
 > \end{align*}
 > $$
 > 
