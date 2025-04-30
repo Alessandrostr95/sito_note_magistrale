@@ -6,7 +6,7 @@ author: Alessandro Straziota
 
 Sia un grafo $G = (\left[ n \right], E)$ ed una sua **colorazione iniziale**
 $$
-\mathbb{x} : \left[ n \right] \rightarrow C \equiv \lbrace 0, 1 \rbrace
+\left[ n \right] \rightarrow C \equiv \lbrace 0, 1 \rbrace
 $$
 Si vuole progettare un protocollo efficiente per il problema del `Majority Consensus`.
 Partendo dall'assunzione che la configurazione iniziale abbia un certo sbilanciamento $s$ (*bias*), l'obiettivo è quello di convergere ad una configurazione monocromatica dove ogni nodo è colorato col colore più popolare inizialmente.
