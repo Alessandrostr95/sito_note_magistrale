@@ -22,6 +22,7 @@ Se $c_v \notin F_v \cup T_v$, allora $c_v$ diventa il colore definitivo di $v$, 
 Altrimenti $v$ scarta $c_v$ e continua alla fase successiva.
 
 - **Figura:** Protocollo *Rand-$2\Delta$*.
+
 	![[adrc-lesson18-img1.png|600]]
 
 
@@ -53,7 +54,7 @@ Altrimenti $v$ scarta $c_v$ e continua alla fase successiva.
 >
 > Quindi, assumiamo che $v$ non termina **prima** del round $i$, la probabilità che termini al round $i$ è almeno $1/2$, **indipendentemente** dagli altri nodi.
 > $$
-> \mathcal{P}(v \mbox{ termina al tempo  } i \vert v \mbox{ non termina prima di  } i) \geq \frac{1}{2}
+> \mathcal{P}(v \text{ termina al tempo  } i \vert v \text{ non termina prima di  } i) \geq \frac{1}{2}
 > $$
 >
 > Viceversa, la probabilità che un dato nodo $v$ **non** termina entro il passo $i$ sarà **al più** $2^{-i}$.
